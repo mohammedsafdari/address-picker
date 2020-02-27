@@ -1,0 +1,82 @@
+ms-modal {
+    display: none;
+ }
+  ms-modal .ms-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: auto;
+ }
+  ms-modal .ms-modal .ms-modal-body {
+    padding: 40px;
+    background: #f7f7f7;
+    margin: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 2px 5px #888888;
+    position: relative;
+    z-index: 900;
+    animation: body-transition 1s forwards;
+    right:0px;
+  }
+
+ ms-modal .ms-modal .ms-modal-close
+ {
+    position: absolute;
+    background: gray;
+	color: white;
+    top: 34px;
+    right: 32px;
+    height: 25px;
+    width: 25px;
+    border: 2px solid white;
+    border-radius: 50%;
+    line-height: 18px;
+    text-align: center;
+    z-index: 1000;
+    animation: body-transition 1s forwards;
+ }
+
+ @keyframes close-button{
+     to {height: 28px;
+         width: 28px;
+         top: 33px;
+         right: 31px}
+ }
+
+ @keyframes body-transition{
+     from{
+         right:100%;
+     }
+ }
+
+ ms-modal .ms-modal .ms-modal-close:hover{
+    background-color: #d9534f;
+    cursor: pointer;
+    /* animation: close-button 0.2s forwards; */
+}
+
+ ms-modal .ms-modal .ms-modal-body:hover{
+    box-shadow: 0px 0px 5px 5px #5cb85c;
+ }
+
+ .ms-modal-close:hover + .ms-modal-body {
+    box-shadow: 0px 0px 5px 5px #d9534f;
+ }
+
+  ms-modal .ms-modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 900;
+ }
+ 
+  body.ms-modal-open {
+    overflow: hidden;
+ }

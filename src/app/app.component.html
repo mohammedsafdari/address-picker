@@ -1,0 +1,80 @@
+<div class="jumbotron">
+
+    <!-- <input name="search" #search="ngModel" type="text" [(ngModel)]= "searchText"
+      class="form-control col-md-4" placeholder="Enter Post Code" pattern="^[0-9]*" required>
+    <button class="btn btn-primary col-md-1" type="submit" [disabled]="search.invalid" mdbBtn (click)="frame.show();findAddress();" mdbWavesEffect>Search</button>
+    <div *ngIf="search.invalid && search.dirty">
+      <p class="invalid">Invalid Post Code format</p>
+    </div> -->
+
+    <form [formGroup]="contactForm">
+    <input formControlName="search"
+      class="form-control col-md-4" placeholder="Enter Post Code" (ngModelChange)="noAddress=false">
+      <button class="btn btn-primary col-md-1" type="submit" 
+      [disabled]="contactForm.get('search').errors" 
+      (click)="findAddress()">Search</button>
+    </form>
+    <div *ngIf="contactForm.get('search').errors && (contactForm.get('search').dirty || contactForm.get('search').touched)">
+      <p *ngIf="contactForm.get('search').errors.pattern" class="invalid">Invalid Post Code format</p>
+      <p *ngIf="contactForm.get('search').errors.required" class="invalid">Field is required</p>
+    </div>
+
+    <div *ngIf="noAddress">
+      <p class="invalid">No Addresses exist on the mentioned post code</p>
+    </div>
+
+  <div *ngIf="selectedAdd">
+    <table class="table table-bordered table-hover table-striped">
+      <tr>{{selectedAddress.add1}}</tr>
+      <tr>{{selectedAddress.add2}}</tr>
+      <tr>{{selectedAddress.add3}}</tr>
+      <tr>{{selectedAddress.town}}</tr>
+      <tr>{{selectedAddress.county}}</tr>
+      <tr>{{selectedAddress.postCode}}</tr>
+    </table>
+  </div>
+</div>
+
+<!-- <div #frame="mdbModal" mdbModal class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Select Address</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <select class="form-control" (change)= "onSelect($event.target.value);">
+          <option selected disabled>Select Option</option>
+          <option *ngFor="let address of filteredAddressList" [value] = "address.add1">
+            {{address.add1}}, {{address.add2}}, {{address.add3}}, {{address.town}}, {{address.county}}
+          </option>
+        </select>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" (click)="frame.hide();showAddress();">Save</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<ms-modal id="custom-modal-1">
+  <select class="col-md-3 form-control" [formControl]="addressDropDown" (change)= "showAddress();setSelectedAddress();">
+    <option disabled [ngValue]="null">Select Address</option>
+    <option *ngFor="let address of filteredAddressList" [ngValue] = "address">
+      {{address.add1}}, {{address.add2}}, {{address.add3}}, {{address.town}}, {{address.county}}
+    </option>
+  </select>
+  <input type="radio" [formControl]="radioButton" name="radioButton" [value]="this.radioValue1">Yes
+  <input type="radio" [formControl]="radioButton" name="radioButton" [value]="this.radioValue2">No
+</ms-modal>
+
+<!-- <aa-modal id="custom-modal-1">
+  <h1>Select Address</h1>
+  <select (change)= "onSelect($event.target.value);showAddress();">
+    <option selected disabled>Select Option</option>
+    <option *ngFor="let address of filteredAddressList" [value] = "address.add1">
+      {{address.add1}}, {{address.add2}}, {{address.add3}}, {{address.town}}, {{address.county}}
+    </option>
+  </select>
+</aa-modal> -->

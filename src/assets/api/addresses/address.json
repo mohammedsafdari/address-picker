@@ -1,0 +1,42 @@
+[
+{
+"add1": "105",
+"add2": "Saifee Nagar",
+"add3" : "Khatiwala Tank",
+"town" : "indore",
+"county" : "MP",
+"postCode" : 100100
+},
+{
+"add1": "106",
+"add2": "Anand Nagar",
+"add3" : "Mhow",
+"town" : "indore",
+"county" : "MP",
+"postCode" : 100100
+},
+{
+"add1": "107",
+"add2": "Sangam Nagar",
+"add3" : "Near Airport",
+"town" : "indore",
+"county" : "MP",
+"postCode" : 100100
+},
+{
+"add1": "108",
+"add2": "Saket Nagar",
+"add3" : "Saket",
+"town" : "Mumbai",
+"county" : "Mumbai District",
+"postCode" : 100101
+},
+{
+"add1": "109",
+"add2": "Kharadi Nagar",
+"add3" : "Kharadi",
+"town" : "Pune",
+"county" : "Pune District",
+"postCode" : 100102
+}
+]
